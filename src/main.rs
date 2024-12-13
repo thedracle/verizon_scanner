@@ -35,6 +35,10 @@ async fn main() {
         }
 
         let output_clone = output.clone();
+        if address.is_empty() {
+            continue;
+        }
+
         set.spawn(async move {
             let response = lookup_verizon_service(&address, &city, &state, &zip).await;
             match response {
